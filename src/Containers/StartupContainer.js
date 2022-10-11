@@ -33,7 +33,6 @@ const StartupContainer = () => {
           textPlaceholder="Enter Name.."
           maxLength={20}
           onChange={str => {
-          alert("Good!")
           }}
                   />
       <CustomButton
