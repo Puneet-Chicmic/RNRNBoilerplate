@@ -1,8 +1,8 @@
-import { BASE_URL1, PREFIX_URL,X_API_KEY } from '@/Config'
+import { BASE_URL1 } from '@/Config'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-   baseUrl: BASE_URL1,
+  baseUrl: BASE_URL1,
   //  baseUrl: PREFIX_URL,
 
   // Comment:- Please share X_API_KEY and Auth token here.
@@ -15,7 +15,7 @@ const baseQuery = fetchBaseQuery({
   //   }
   //   return headers
   // },
-  })
+})
 
 const baseQueryWithInterceptor = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions)

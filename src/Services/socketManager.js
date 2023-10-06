@@ -1,10 +1,9 @@
-import { BASE_URL1, PREFIX_URL } from '@/Config'
+import { BASE_URL1 } from '@/Config'
 import io from 'socket.io-client'
 import { store } from '../Store'
-import { values } from 'lodash'
 class SocketManager {
   socket = ''
-  async establishConnection(val = () => {}) {
+  async establishConnection(val = () => { }) {
     this.socket = io(
       `${BASE_URL1}?authorization=${store.getState().common.authToken}`,
       {
@@ -28,28 +27,28 @@ class SocketManager {
     this.socket.disconnect()
     this.socket.removeAllListeners()
   }
-  emitEvent(eventName, data, val = () => {}) {
+  emitEvent(eventName, data, val = () => { }) {
     this.socket?.emit(eventName, data, res => {
       val(res)
     })
   }
-  onConnect(val = () => {}) {
+  onConnect(val = () => { }) {
     this.socket?.on('connect', socket => {
       val(socket)
     })
   }
-  onListenEvent(eventName, val = () => {}) {
+  onListenEvent(eventName, val = () => { }) {
     this.socket.on(eventName, res => {
       val(res)
     })
   }
-  onNewMessage(val = () => {}) {
+  onNewMessage(val = () => { }) {
     this.socket?.on('newMessage', res => {
       console.log(res, '@newMessage')
       val(res)
     })
   }
-  otherDeviceLogin(val = () => {}) {
+  otherDeviceLogin(val = () => { }) {
     this.socket?.on('otherDeviceLogin', res => {
       val(res)
     })
